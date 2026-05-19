@@ -1,3 +1,4 @@
+import contactManager.ContactManager;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
