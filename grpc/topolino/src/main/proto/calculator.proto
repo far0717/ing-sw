@@ -21,3 +21,29 @@ service Calculator {
   rpc Multiply (OperationRequest) returns (OperationResponse);
   rpc Divide   (OperationRequest) returns (OperationResponse);
 }
+
+message Person {
+  int32 id = 1;
+  string nome = 2;
+  int64 numero = 3;
+}
+
+message Result {
+  bool creato = 1;
+}
+
+message NomeContatto {
+  string nomeContatto = 1;
+}
+
+message ListRequest {}
+
+message ContactList {
+  repeated Person person = 1;
+}
+
+service Rubrica {
+  rpc AddContact (Person)        returns (Result);
+  rpc GetContact (NomeContatto)  returns (Person);
+  rpc GetAll     (ListRequest)   returns (ContactList);
+}

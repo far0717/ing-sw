@@ -1,4 +1,4 @@
-package it.unical.client;
+package it.unical.baseExample.client;
 
 import io.grpc.*;
 import it.unical.proto.GreeterGrpc;

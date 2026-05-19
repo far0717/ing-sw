@@ -1,12 +1,10 @@
-package it.unical.server;
+package it.unical.baseExample.server;
 
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 public class ServerMain {
 

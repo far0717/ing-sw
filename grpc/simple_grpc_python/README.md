@@ -31,7 +31,7 @@ ___
 
 ## Compilare file .proto
 
-    python compile_proto.py <proto_base_path>
+    python proto_compiler.py <proto_base_path>
 ___
 
 Per ulteriori informazioni in merito al framework gRPC 

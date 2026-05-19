@@ -1,4 +1,4 @@
-package it.unical.server;
+package it.unical.baseExample.server;
 
 import io.grpc.stub.StreamObserver;
 import it.unical.proto.GreeterGrpc;

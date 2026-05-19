@@ -1,57 +1,17 @@
-# Linee guida gRPC
-___
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>it.ingsw</groupId>
+        <artifactId>grpc</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-### Set up file .proto
-```
-syntax = "proto3";
+    <artifactId>example_grpc</artifactId>
 
-option java_package = "it.ingsw";
-option java_outer_classname = "NameProto";
-option java_multiple_files = true;
-
-package namePackage;
-```
-
-___
-### Setup Server
-Di seguito il codice necessario per avviare un server gRPC:
-
-    Server server = ServerBuilder
-    .forPort(PORT)
-    .addService(<concreteService1>)
-    .addService(<concreteService2>)
-    .build()
-    .start();
-
-    System.out.println("Server gRPC avviato sulla porta " + PORT);
-    System.out.println("In ascolto di chiamate remote...");
-
-    // Chiusura elegante all'interrupt
-    Runtime.getRuntime().addShutdownHook(new Thread(server::shutdown));
-    server.awaitTermination();
-        
-### Setup Client
-Di seguito il codice necessario per avviare un client gRPC:
-
-```java
-    ManagedChannel channel = ManagedChannelBuilder
-                .forAddress("localhost", 50051)
-                .usePlaintext()
-                .build();
-
-    //    the client code goes here 
-    //
-    //
-
-    channel.shutdown();
-```
-
-___
-### Setup pom.xml
-Di seguito le dipendenze necessarie da aggiungere al file pom.xml:
-
-```xml
-<properties>
+    <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -75,7 +35,6 @@ Di seguito le dipendenze necessarie da aggiungere al file pom.xml:
             <artifactId>grpc-stub</artifactId>
             <version>${grpc.version}</version>
         </dependency>
-        <!-- Necessario per @javax.annotation.Generated -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>annotations-api</artifactId>
@@ -86,7 +45,6 @@ Di seguito le dipendenze necessarie da aggiungere al file pom.xml:
 
     <build>
     <extensions>
-        <!-- Rileva l'OS per scaricare il protoc corretto -->
         <extension>
             <groupId>kr.motd.maven</groupId>
             <artifactId>os-maven-plugin</artifactId>
@@ -119,4 +77,5 @@ Di seguito le dipendenze necessarie da aggiungere al file pom.xml:
         </plugin>
     </plugins>
     </build>
-```
+
+</project>

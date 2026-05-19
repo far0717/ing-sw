@@ -11,6 +11,7 @@ public class ServerCalculator {
             Server server = ServerBuilder
                     .forPort(50010)
                     .addService(new CalculatorImpl())
+                    .addService(new RubricaImpl())
                     .build()
                     .start();
 

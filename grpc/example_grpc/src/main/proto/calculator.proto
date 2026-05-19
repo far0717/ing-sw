@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+option java_package = "it.ingsw";
+option java_outer_classname = "CalculatorProto";
+option java_multiple_files = true;
+
+package calculator;
+
+message OperationRequest {
+  double operandA = 1;
+  double operandB = 2;
+}
+
+message OperationResponse {
+  double result = 1;
+  string description = 2;
+}
+
+service Calculator {
+  rpc Add(OperationRequest) returns (OperationResponse);
+  rpc Subtract(OperationRequest) returns (OperationResponse);
+  rpc Multiply(OperationRequest) returns (OperationResponse);
+  rpc Divide(OperationRequest) returns (OperationResponse);
+}
+
+message Person {
+  optional string name = 1;
+  optional int32 id = 2;
+  optional string email = 3;
+
+  enum PhoneType {
+    PHONE_TYPE_UNSPECIFIED = 0;
+    PHONE_TYPE_MOBILE = 1;
+    PHONE_TYPE_HOME = 2;
+    PHONE_TYPE_WORK = 3;
+  }
+
+  message PhoneNumber {
+    optional string number = 1;
+    optional PhoneType type = 2;
+  }
+
+  repeated PhoneNumber phones = 4;
+}
+
+message AddressBook {
+  repeated Person people = 1;
+}
+
+message Result {
+  bool result = 1;
+  string mesage = 2;
+}
+
+message NomeContatto {
+  string nomeContatto = 1;
+}
+
+message ListRequest {}
+
+message ContactList {
+  repeated Person listaContatti = 1;
+}
+
+service Rubrica {
+  rpc AddContact(Person) returns (Result);
+  rpc GetContact(NomeContatto) returns(Person);
+  rpc GetAll(ListRequest) returns(ContactList);
+}
